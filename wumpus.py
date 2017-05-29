@@ -60,7 +60,7 @@ while True:
 		if tools['radar'] > 0:
 			move_count = move_count + 1
 			tools['radar'] -= 1
-			# print 'count of radar =',tools['radar'] #test decrement of radar
+			# print 'count of radar =',tools['radar'] #test decrement of uses: this works, feel free to clean up rems
 			if abs(wumpus_location - player_location) < 5 or abs(wumpus_friend_location - player_location) < 5: print "RADAR: A wumpus is very close."
 			elif abs(wumpus_location - player_location) < 15 or abs(wumpus_friend_location - player_location) < 15: print "RADAR: There's a wumpus not too far away."
 			elif abs(wumpus_location - player_location) >= 15 or abs(wumpus_friend_location - player_location) >= 15: print "RADAR: No wumpuses around here."
