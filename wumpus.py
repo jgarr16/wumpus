@@ -13,7 +13,7 @@ wumpus_block_location = 0
 wumpus_friend_block_location = 0
 double_wumpus_block_location = ()
 tools = {'radar':3,'block':2}
-# create a dict() for 'help' or 'info' or 'rules' about this game... 
+# create a dict() for 'help' or 'info' or 'rules' about this game... Figure out how to manage dict().
 skip = False
 skip_intro = False
 while player_location == wumpus_location or player_location == wumpus_friend_location:
