@@ -9,11 +9,11 @@ player_location = choice(cave_numbers)
 last_player_location = ()
 block_count = 0
 move_count = 0
+high_score = []
 wumpus_block_location = 0
 wumpus_friend_block_location = 0
 double_wumpus_block_location = ()
 tools = {'radar':3,'block':2}
-# create a dict() for 'help' or 'info' or 'rules' about this game... Figure out how to manage dict().
 skip = False
 skip_intro = False
 while player_location == wumpus_location or player_location == wumpus_friend_location:
@@ -29,6 +29,7 @@ if skip_intro == False:
 	print "Type 'done' to exit the game."
 	# print "Wumpus = ", wumpus_location
 	# print "Wumpus Friend = ", wumpus_friend_location
+	# print "The high score is", high_score, "by", "TBD" #get the name of the high scoring player
 	print ""
 	skip_intro = True
 
@@ -77,12 +78,14 @@ while True:
 	if (player_input[:5] == 'block' and int(player_input[-2:]) == wumpus_location) and (player_input[:5] == 'block' and int(player_input[-2:]) == wumpus_friend_location):
 		double_wumpus_block_location = int(player_input[-2:])
 		print "\nGrand slam! You trapped both wumpuses in cave", double_wumpus_block_location,"in",move_count,"moves\n"
+		high_score = high_score.append(move_count)
 		break
 	elif player_input[:5] == 'block' and int(player_input[-2:]) == wumpus_location:
 		wumpus_found = True
 		wumpus_block_location = int(player_input[-2:])
 		if wumpus_found == True and wumpus_friend_found == True:
 			print "\nThat's it! You got both of them in",move_count,"moves!\n"
+			high_score = high_score.append(move_count)
 			block_count = block_count + 1
 			tools['block'] -= 1
 			break
