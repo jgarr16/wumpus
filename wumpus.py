@@ -17,7 +17,6 @@ tools = {'radar':3,'block':2}
 # create a dict() for 'help' or 'info' or 'rules' about this game... Figure out how to manage dict().
 skip = False
 skip_intro = False
-# prepare to write files to keep up with high scores
 
 # Setup for Main Line
 while player_location == wumpus_location or player_location == wumpus_friend_location:
