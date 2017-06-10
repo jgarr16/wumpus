@@ -17,6 +17,7 @@ tools = {'radar':3,'block':2}
 # create a dict() for 'help' or 'info' or 'rules' about this game... Figure out how to manage dict().
 skip = False
 skip_intro = False
+# prepare to write files to keep up with high scores
 
 # Setup for Main Line
 while player_location == wumpus_location or player_location == wumpus_friend_location:
@@ -75,10 +76,9 @@ while True:
 		if tools['radar'] > 0:
 			move_count = move_count + 1
 			tools['radar'] -= 1
-			# FUTURE: change the messages to be consistent - indicate distance in RADAR returns (i.e., <5, 5-15, >15 caves...)???
-			if abs(wumpus_location - player_location) < 5 or abs(wumpus_friend_location - player_location) < 5: print "RADAR: A wumpus is very close."
-			elif abs(wumpus_location - player_location) < 15 or abs(wumpus_friend_location - player_location) < 15: print "RADAR: There's a wumpus not too far away."
-			elif abs(wumpus_location - player_location) >= 15 or abs(wumpus_friend_location - player_location) >= 15: print "RADAR: No wumpuses around here."
+			if abs(wumpus_location - player_location) < 5 or abs(wumpus_friend_location - player_location) < 5: print "RADAR: wumpus within 5 caves!"
+			elif abs(wumpus_location - player_location) < 15 or abs(wumpus_friend_location - player_location) < 15: print "RADAR: wumpus 5 to 15 caves."
+			elif abs(wumpus_location - player_location) >= 15 or abs(wumpus_friend_location - player_location) >= 15: print "RADAR: wumpus 15 caves away."
 			skip = True
 			continue
 		else:
@@ -113,10 +113,9 @@ while True:
 			print "You trapped the wumpus in cave", wumpus_block_location
 			block_count = block_count + 1
 			tools['block'] -= 1
-			# FUTURE: change the messages to be consistent - indicate distance in RADAR returns (i.e., <5, 5-15, >15 caves...)???
-			if abs(player_location - wumpus_friend_location) < 5: print "Be careful, his friend is close by."
-			elif abs(player_location - wumpus_friend_location) < 15: print "His friend is not too far away."
-			elif abs(player_location - wumpus_friend_location) >= 15: print "His friend is out there somewhere."
+			if abs(player_location - wumpus_friend_location) < 5: print "Be careful, his friend is within 5 caves!"
+			elif abs(player_location - wumpus_friend_location) < 15: print "His friend is 5 to 15 caves away."
+			elif abs(player_location - wumpus_friend_location) >= 15: print "His friend is more than 15 caves away."
 			skip = True
 
 # Wumpus Friend Trapped - handle the trapping of the Wumpus' friend
@@ -131,10 +130,9 @@ while True:
 			print "You trapped the wumpus' friend in cave", wumpus_friend_block_location
 			block_count = block_count + 1
 			tools['block'] -= 1
-			# FUTURE: change the messages to be consistent - indicate distance in RADAR returns (i.e., <5, 5-15, >15 caves...)???
-			if abs(player_location - wumpus_location) < 5: print "Be careful, the wumpus is close by."
-			elif abs(player_location - wumpus_location) < 15: print "The wumpus is not too far away."
-			elif abs(player_location - wumpus_location) >= 15: print "The wumpus is out there somewhere."
+			if abs(player_location - wumpus_location) < 5: print "Be careful, the wumpus is within 5 caves."
+			elif abs(player_location - wumpus_location) < 15: print "The wumpus is 5 to 15 caves away."
+			elif abs(player_location - wumpus_location) >= 15: print "The wumpus is more than 15 caves away."
 			skip = True
 
 # Missed Block - deal with situation when the player uses a block, but doesn't trap a wumpus 
